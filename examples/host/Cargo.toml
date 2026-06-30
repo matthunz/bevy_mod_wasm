@@ -1,0 +1,9 @@
+[package]
+name = "bevy_mod_wasm_example_host"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+wasmtime = "28"
+anyhow = "1"
