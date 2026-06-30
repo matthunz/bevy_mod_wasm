@@ -8,11 +8,23 @@ license = "MIT OR Apache-2.0"
 resolver = "3"
 members = [
     ".",
+    "macros",
     "examples/guest",
-    "examples/host"
+    "examples/host",
+    "examples/core"
 ]
 
+[features]
+default = ["host"]
+# Native side: drives the wasm runtime and exposes bevy resources to guests.
+host = ["dep:bevy", "dep:wasmtime", "dep:anyhow", "dep:serde", "dep:serde_json"]
+# Wasm side: links against the host imports and deserializes resources.
+guest = ["dep:serde", "dep:serde_json", "dep:bevy_mod_wasm_macros"]
+
 [dependencies]
-bevy = { version = "0.19.0", default-features = false, features = ["std", "bevy_log"] }
-wasmtime = "46"
-anyhow = "1"
+bevy = { version = "0.19.0", default-features = false, features = ["std", "bevy_log"], optional = true }
+wasmtime = { version = "46", optional = true }
+anyhow = { version = "1", optional = true }
+serde = { version = "1", features = ["derive"], optional = true }
+serde_json = { version = "1", optional = true }
+bevy_mod_wasm_macros = { path = "macros", version = "0.1.0", optional = true }

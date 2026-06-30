@@ -436,12 +436,27 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "bevy",
+ "bevy_mod_wasm_macros",
+ "serde",
+ "serde_json",
  "wasmtime",
+]
+
+[[package]]
+name = "bevy_mod_wasm_example_core"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "serde",
 ]
 
 [[package]]
 name = "bevy_mod_wasm_example_guest"
 version = "0.1.0"
+dependencies = [
+ "bevy_mod_wasm",
+ "bevy_mod_wasm_example_core",
+]
 
 [[package]]
 name = "bevy_mod_wasm_example_host"
@@ -449,6 +464,15 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "bevy_mod_wasm",
+ "bevy_mod_wasm_example_core",
+]
+
+[[package]]
+name = "bevy_mod_wasm_macros"
+version = "0.1.0"
+dependencies = [
+ "quote",
+ "syn",
 ]
 
 [[package]]
