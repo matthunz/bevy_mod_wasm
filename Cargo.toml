@@ -13,3 +13,6 @@ members = [
 ]
 
 [dependencies]
+bevy = { version = "0.19.0", default-features = false, features = ["std", "bevy_log"] }
+wasmtime = "46"
+anyhow = "1"
